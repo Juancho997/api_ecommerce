@@ -31,7 +31,6 @@ route.get("/:id", verifyToken, async (req: any, res: any) => {
 
 
 //registro de usuario. Solo el Dev crea al Admin 
-<<<<<<< HEAD
 route.post('/signup', [body("name", "ingrese un nombre valido").trim().notEmpty().escape(),
 body("email", "ingrese un email valido").trim().isEmail().normalizeEmail(),
 body("password", "ingrese una password valida").trim().escape()
@@ -39,15 +38,6 @@ body("password", "ingrese una password valida").trim().escape()
 
 //loggeo de Usuario y Admin registrado                      
 route.post('/login', authCtrl.logIn)
-=======
-route.post('/signup', [ body("name", "ingrese un nombre valido").trim().notEmpty().escape(),
-                        body("email", "ingrese un email valido").trim().isEmail().normalizeEmail(),
-                        body("password", "ingrese una password valida").trim().escape()
-                      ], authCtrl.signUp) 
-
-//loggeo de Usuario y Admin registrado                      
-route.post('/login', authCtrl.logIn) 
->>>>>>> ae4fb86454dada988359621dd6cb407610c255ca
 
 
 
@@ -69,7 +59,6 @@ route.delete('/:id', [verifyToken, isAdmin], async (req: Request, res: Response,
 });
 
 route.put('/:id', verifyToken, async (req: Request, res: Response, next: NextFunction) => {
-    console.log("entre al modificar")
     try {
         const { id } = req.params;
         if (req.body.password) {
@@ -82,11 +71,7 @@ route.put('/:id', verifyToken, async (req: Request, res: Response, next: NextFun
             const updatedUser = await User.findById({ _id: id })
             res.send(updatedUser)
     } catch (err) {
-<<<<<<< HEAD
         next(err)
-=======
-        next(err+" errooooooooooooooooooooooor")
->>>>>>> ae4fb86454dada988359621dd6cb407610c255ca
     }
 
 });
