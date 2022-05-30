@@ -1,4 +1,4 @@
-import express from "express";
+import express, { NextFunction, Request, Response } from "express";
 import morgan from "morgan";
 import router from "./routes/index"
 import {createRoles} from './controllers/initialSetUp';
@@ -14,14 +14,14 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(router);
 
-app.use((req:any, res:any, next:any) => {
+app.use((req:Request, res:Response, next:NextFunction) => {
     const error: any = new Error("Not found");
     error.status = 404;
     next(error);
   }
   );
   
-  app.use((error: any, req: any, res: any, next: any) => {
+  app.use((error: any, req: Request, res: Response, next: NextFunction) => {
     res.status(error.status || 500);
     res.json({
       error: {

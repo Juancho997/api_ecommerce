@@ -8,15 +8,15 @@ import order from './Orders';
 
 
 
-const route=Router() ;
+const router = Router() ;
 
-route.use("/users", user) //CRUD de usuario - ADMIN lee y borra => implementar ban y permaban?
-route.use('/auth/tokenConfirmed', token_confirmed)   
-route.use("/products", product) //CRUD - User y Admin
-route.use("/categories",category) // CRUD - Admin
-route.use("/orders", order) 
-
-
+router.use("/users", user) //CRUD de usuario - ADMIN lee y borra => implementar ban y permaban?
+router.use('/auth/tokenConfirmed', token_confirmed)   
+router.use("/products", product) //CRUD - User y Admin
+router.use("/categories",category) // CRUD - Admin
+router.use("/orders", order) 
 
 
-export default route
+
+
+export default router

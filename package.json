@@ -1,5 +1,5 @@
 {
-  "name": "api",
+  "name": "api_ecommerce",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "server": "json-server --watch db.json"
   },
   "keywords": [],
-  "author": "",
+  "author": "Juan Bonino",
   "license": "ISC",
   "dependencies": {
     "@types/bcrypt": "^5.0.0",

@@ -15,7 +15,7 @@ route.get("/", async (req:any, res:any,next:any) => {
     if(name){
         try {
             const productName: any[] = await Product.find({ name: {$regex: req.query.name, $options:'i'}})
-            return productName.length === 0 ? res.json({"message" : "not found product"}) : res.json(productName)
+            return productName.length === 0 ? res.json({"message" : "Product not found"}) : res.json(productName)
             } catch (error) {
             next(error)
         }
@@ -87,10 +87,10 @@ route.get("/:id",  async(req:any, res:any) => {
     console.log(req.userId)
     let id:string=req.params.id;
     try {
-        let resultado:any[]|null=await Product.findById(id).populate(['user'])
-        res.send(resultado? resultado : "No se encuentra el producto" )
+        const found =await Product.findById(id).populate(['user'])
+        res.send(found)
     } catch (error) {
-        res.send({error: "No se encuentra el producto"})
+        res.send({error: "Product no found"})
     }
  
 });

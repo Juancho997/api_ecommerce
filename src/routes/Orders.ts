@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response, Router } from "express";
 import Order from "../models/Order";
 import Role from "../models/Role";
-import Product from "../models/Product";
 import { verifyToken, isAdmin } from "../controllers/authJwt";
 import User from "../models/User";
 
@@ -30,8 +29,8 @@ route.get("/", verifyToken, async (req: Request, res: Response, next: NextFuncti
 route.get("/:id", verifyToken,  async(req:any, res:any) => {
     const { id } = req.params
     try {
-        const found:any[]|null=await Order.findById(id).populate({path: 'user', model : 'User'})
-        res.send(found? found : "Order not found" )
+        const found =await Order.findById(id).populate({path: 'user', model : 'User'})
+        res.send(found)
     } catch (error) {
         res.send({error: "Order not found"})
     }

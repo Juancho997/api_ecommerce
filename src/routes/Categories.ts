@@ -6,8 +6,8 @@ const route = Router()
 
 route.get("/", async (req: Request, res: Response, next: NextFunction) => {
     try {
-        let cats: string[] = await Category.find();
-        res.send(cats.length ? cats : "There are no categories in DB")
+        const categories = await Category.find();
+        res.send(categories)
     } catch (error) {
         res.send({ error: "There are no categories in DB" })
     }
